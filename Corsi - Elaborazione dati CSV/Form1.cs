@@ -41,6 +41,11 @@ namespace Corsi___Elaborazione_dati_CSV
             Lunghezza(appoggio);
         }
 
+        private void punto4_Click(object sender, EventArgs e)
+        {
+            Spaziatura(appoggio);
+        }
+
         //Funzione N.1
         static void Aggiunta(string file, string appoggio, Random random)
         {
@@ -77,6 +82,7 @@ namespace Corsi___Elaborazione_dati_CSV
             MessageBox.Show("Il numero di campi è " + n);
         }
 
+
         //Funzione N.3
         static void Lunghezza(string appoggio)
         {
@@ -93,6 +99,26 @@ namespace Corsi___Elaborazione_dati_CSV
             }
             reader.Close();
             MessageBox.Show("La lunghezza massima dei record presenti è " + max);
+        }
+
+
+        //Funzione N.4
+        static void Spaziatura(string appoggio)
+        {
+            string line;
+            int controllo = 0;
+            StreamReader reader = new StreamReader(appoggio);
+            StreamWriter writer = new StreamWriter("temp.csv");
+            while ((line = reader.ReadLine()) != null)
+            {
+                if(controllo == 0)
+                    writer.WriteLine(line);
+                else
+                    writer.WriteLine(line.PadRight(200)+"#");
+                controllo++;
+            }
+            reader.Close();
+            writer.Close();
         }
     }
 }

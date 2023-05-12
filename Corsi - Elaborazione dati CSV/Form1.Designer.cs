@@ -72,6 +72,7 @@
             this.punto4.TabIndex = 3;
             this.punto4.Text = "Spaziatura";
             this.punto4.UseVisualStyleBackColor = true;
+            this.punto4.Click += new System.EventHandler(this.punto4_Click);
             // 
             // Form1
             // 
