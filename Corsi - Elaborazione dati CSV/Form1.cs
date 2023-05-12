@@ -36,6 +36,11 @@ namespace Corsi___Elaborazione_dati_CSV
             Campi(appoggio);
         }
 
+        private void punto3_Click(object sender, EventArgs e)
+        {
+            Lunghezza(appoggio);
+        }
+
         //Funzione N.1
         static void Aggiunta(string file, string appoggio, Random random)
         {
@@ -59,6 +64,7 @@ namespace Corsi___Elaborazione_dati_CSV
             writer.Close();
         }
 
+
         //Funzione N.2
         static void Campi(string appoggio)
         {
@@ -69,6 +75,24 @@ namespace Corsi___Elaborazione_dati_CSV
             n = line.Split(';').Length;
             reader.Close();
             MessageBox.Show("Il numero di campi è " + n);
+        }
+
+        //Funzione N.3
+        static void Lunghezza(string appoggio)
+        {
+            string line;
+            int n, max = 0;
+            StreamReader reader = new StreamReader(appoggio);
+            while ((line = reader.ReadLine()) != null)
+            {
+                n = line.Length;
+                if(n > max)
+                {
+                    max = n;
+                }
+            }
+            reader.Close();
+            MessageBox.Show("La lunghezza massima dei record presenti è " + max);
         }
     }
 }

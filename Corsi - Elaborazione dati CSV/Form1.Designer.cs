@@ -30,6 +30,8 @@
         {
             this.punto1 = new System.Windows.Forms.Button();
             this.punto2 = new System.Windows.Forms.Button();
+            this.punto3 = new System.Windows.Forms.Button();
+            this.punto4 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // punto1
@@ -52,11 +54,32 @@
             this.punto2.UseVisualStyleBackColor = true;
             this.punto2.Click += new System.EventHandler(this.punto2_Click);
             // 
+            // punto3
+            // 
+            this.punto3.Location = new System.Drawing.Point(239, 34);
+            this.punto3.Name = "punto3";
+            this.punto3.Size = new System.Drawing.Size(82, 23);
+            this.punto3.TabIndex = 2;
+            this.punto3.Text = "Lunghezza";
+            this.punto3.UseVisualStyleBackColor = true;
+            this.punto3.Click += new System.EventHandler(this.punto3_Click);
+            // 
+            // punto4
+            // 
+            this.punto4.Location = new System.Drawing.Point(344, 34);
+            this.punto4.Name = "punto4";
+            this.punto4.Size = new System.Drawing.Size(82, 23);
+            this.punto4.TabIndex = 3;
+            this.punto4.Text = "Spaziatura";
+            this.punto4.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.punto4);
+            this.Controls.Add(this.punto3);
             this.Controls.Add(this.punto2);
             this.Controls.Add(this.punto1);
             this.Name = "Form1";
@@ -69,6 +92,8 @@
 
         private System.Windows.Forms.Button punto1;
         private System.Windows.Forms.Button punto2;
+        private System.Windows.Forms.Button punto3;
+        private System.Windows.Forms.Button punto4;
     }
 }
 
