@@ -7,14 +7,68 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+using System.Runtime.InteropServices;
 
 namespace Corsi___Elaborazione_dati_CSV
 {
     public partial class Form1 : Form
     {
+        StreamReader reader = null;
+        StreamWriter writer = null;
+        Random random;
+        string file, appoggio;
         public Form1()
         {
             InitializeComponent();
+            file = "corsi.csv";
+            appoggio = "corsi2.csv";
+            random = new Random();
+        }
+
+        private void punto1_Click(object sender, EventArgs e)
+        {
+            Aggiunta(file, appoggio, random);
+        }
+
+        private void punto2_Click(object sender, EventArgs e)
+        {
+            Campi(appoggio);
+        }
+
+        //Funzione N.1
+        static void Aggiunta(string file, string appoggio, Random random)
+        {
+            string line;
+            int contatore = 0;
+            StreamReader reader = new StreamReader(file);
+            StreamWriter writer = new StreamWriter(appoggio);
+            while ((line = reader.ReadLine()) != null)
+            {
+                if (contatore == 0)
+                {
+                    writer.WriteLine(line + ";miovalore;cancellazione logica");
+                }
+                else
+                {
+                    writer.WriteLine(line + ";" + random.Next(10, 21) + ";true");
+                }
+                contatore++;
+            }
+            reader.Close();
+            writer.Close();
+        }
+
+        //Funzione N.2
+        static void Campi(string appoggio)
+        {
+            string line;
+            int n;
+            StreamReader reader = new StreamReader(appoggio);
+            line = reader.ReadLine();
+            n = line.Split(';').Length;
+            reader.Close();
+            MessageBox.Show("Il numero di campi è " + n);
         }
     }
 }
