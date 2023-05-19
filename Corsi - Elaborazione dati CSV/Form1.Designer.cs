@@ -32,13 +32,17 @@
             this.punto2 = new System.Windows.Forms.Button();
             this.punto3 = new System.Windows.Forms.Button();
             this.punto4 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.punto5 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // punto1
             // 
-            this.punto1.Location = new System.Drawing.Point(37, 34);
+            this.punto1.Location = new System.Drawing.Point(28, 28);
+            this.punto1.Margin = new System.Windows.Forms.Padding(2);
             this.punto1.Name = "punto1";
-            this.punto1.Size = new System.Drawing.Size(75, 23);
+            this.punto1.Size = new System.Drawing.Size(56, 19);
             this.punto1.TabIndex = 0;
             this.punto1.Text = "Aggiunta";
             this.punto1.UseVisualStyleBackColor = true;
@@ -46,9 +50,10 @@
             // 
             // punto2
             // 
-            this.punto2.Location = new System.Drawing.Point(136, 34);
+            this.punto2.Location = new System.Drawing.Point(102, 28);
+            this.punto2.Margin = new System.Windows.Forms.Padding(2);
             this.punto2.Name = "punto2";
-            this.punto2.Size = new System.Drawing.Size(75, 23);
+            this.punto2.Size = new System.Drawing.Size(56, 19);
             this.punto2.TabIndex = 1;
             this.punto2.Text = "Campi";
             this.punto2.UseVisualStyleBackColor = true;
@@ -56,9 +61,10 @@
             // 
             // punto3
             // 
-            this.punto3.Location = new System.Drawing.Point(239, 34);
+            this.punto3.Location = new System.Drawing.Point(179, 28);
+            this.punto3.Margin = new System.Windows.Forms.Padding(2);
             this.punto3.Name = "punto3";
-            this.punto3.Size = new System.Drawing.Size(82, 23);
+            this.punto3.Size = new System.Drawing.Size(62, 19);
             this.punto3.TabIndex = 2;
             this.punto3.Text = "Lunghezza";
             this.punto3.UseVisualStyleBackColor = true;
@@ -66,26 +72,61 @@
             // 
             // punto4
             // 
-            this.punto4.Location = new System.Drawing.Point(344, 34);
+            this.punto4.Location = new System.Drawing.Point(258, 28);
+            this.punto4.Margin = new System.Windows.Forms.Padding(2);
             this.punto4.Name = "punto4";
-            this.punto4.Size = new System.Drawing.Size(82, 23);
+            this.punto4.Size = new System.Drawing.Size(69, 19);
             this.punto4.TabIndex = 3;
             this.punto4.Text = "Spaziatura";
             this.punto4.UseVisualStyleBackColor = true;
             this.punto4.Click += new System.EventHandler(this.punto4_Click);
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(28, 198);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 4;
+            // 
+            // punto5
+            // 
+            this.punto5.Location = new System.Drawing.Point(340, 28);
+            this.punto5.Margin = new System.Windows.Forms.Padding(2);
+            this.punto5.Name = "punto5";
+            this.punto5.Size = new System.Drawing.Size(69, 19);
+            this.punto5.TabIndex = 5;
+            this.punto5.Text = "Coda";
+            this.punto5.UseVisualStyleBackColor = true;
+            this.punto5.Click += new System.EventHandler(this.punto5_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(25, 170);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(507, 13);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Comune;Provincia;Denominazione sito;Indirizzo;Numero civico;ID Anagrafe;miovalore" +
+    ";cancellazione logica";
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(600, 366);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.punto5);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.punto4);
             this.Controls.Add(this.punto3);
             this.Controls.Add(this.punto2);
             this.Controls.Add(this.punto1);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -95,6 +136,9 @@
         private System.Windows.Forms.Button punto2;
         private System.Windows.Forms.Button punto3;
         private System.Windows.Forms.Button punto4;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button punto5;
+        private System.Windows.Forms.Label label1;
     }
 }
 

@@ -46,6 +46,11 @@ namespace Corsi___Elaborazione_dati_CSV
             Spaziatura(appoggio);
         }
 
+        private void punto5_Click(object sender, EventArgs e)
+        {
+            RecordCoda(appoggio, textBox1.Text);
+        }
+
         //Funzione N.1
         static void Aggiunta(string file, string appoggio, Random random)
         {
@@ -101,6 +106,11 @@ namespace Corsi___Elaborazione_dati_CSV
             MessageBox.Show("La lunghezza massima dei record presenti è " + max);
         }
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
 
         //Funzione N.4
         static void Spaziatura(string appoggio)
@@ -118,6 +128,15 @@ namespace Corsi___Elaborazione_dati_CSV
                 controllo++;
             }
             reader.Close();
+            writer.Close();
+        }
+
+
+        //Funzione N.5
+        static void RecordCoda(string appoggio, string stringa)
+        {
+            StreamWriter writer = new StreamWriter("temp.csv", true);
+            writer.WriteLine(stringa);
             writer.Close();
         }
     }
