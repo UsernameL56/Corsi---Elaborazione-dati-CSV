@@ -56,6 +56,11 @@ namespace Corsi___Elaborazione_dati_CSV
             TreCampi(appoggio);
         }
 
+        private void punto7_Click(object sender, EventArgs e)
+        {
+            Ricerca(appoggio);
+        }
+
         //Funzione N.1
         public void Aggiunta(string file, string appoggio, Random random)
         {
@@ -154,6 +159,55 @@ namespace Corsi___Elaborazione_dati_CSV
             reader.Close();
         }
 
+
+        //Funzione N.7
+        public void Ricerca(string appoggio)
+        {
+            string line;
+            int [] array = new int[1000];
+            int indice = 0, temp, controllo = 0;
+            StreamReader reader = new StreamReader(appoggio);
+            
+            while ((line = reader.ReadLine()) != null)
+            {
+                string[] split = line.Split(';');
+                if (controllo != 0)
+                    //array[indice] = Convert.ToInt32(split[5]);
+                    if (split[5] == textBox1.Text)
+                    {
+                        MessageBox.Show("Numero trovato nella riga N." + controllo);
+                        controllo = 0;
+                        break;
+                    }
+                controllo++;
+                //indice++;
+            }
+            if(controllo != 0)
+            MessageBox.Show("Numero non trovato");
+
+            /*
+             * BUBBLE SORT PER VERIFICARE CHE I CAMPI SONO UNIVOCI  
+            for (int i = 0; i < indice-1; i++)
+            {
+                for (int j = 0; j < indice-1; j++)
+                {
+                    if(array[j] > array[j + 1])
+                    {
+                        temp = array[j];
+                        array[j] = array[j + 1];
+                        array[j + 1] = temp;
+                    }
+                }
+            }
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                listView1.Items.Add((array[i]).ToString());
+            }
+            */
+
+            reader.Close();
+        }
 
         private void Form1_Load(object sender, EventArgs e)
         {

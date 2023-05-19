@@ -37,6 +37,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.listView1 = new System.Windows.Forms.ListView();
             this.punto6 = new System.Windows.Forms.Button();
+            this.punto7 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // punto1
@@ -131,11 +132,22 @@
             this.punto6.UseVisualStyleBackColor = true;
             this.punto6.Click += new System.EventHandler(this.punto6_Click);
             // 
+            // punto7
+            // 
+            this.punto7.Location = new System.Drawing.Point(515, 26);
+            this.punto7.Name = "punto7";
+            this.punto7.Size = new System.Drawing.Size(75, 23);
+            this.punto7.TabIndex = 9;
+            this.punto7.Text = "Ricerca";
+            this.punto7.UseVisualStyleBackColor = true;
+            this.punto7.Click += new System.EventHandler(this.punto7_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(872, 471);
+            this.Controls.Add(this.punto7);
             this.Controls.Add(this.punto6);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.label1);
@@ -165,6 +177,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.Button punto6;
+        private System.Windows.Forms.Button punto7;
     }
 }
 
