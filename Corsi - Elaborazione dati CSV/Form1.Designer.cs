@@ -35,6 +35,8 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.punto5 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.punto6 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // punto1
@@ -83,7 +85,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(28, 198);
+            this.textBox1.Location = new System.Drawing.Point(28, 89);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 20);
             this.textBox1.TabIndex = 4;
@@ -102,18 +104,40 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(25, 170);
+            this.label1.Location = new System.Drawing.Point(25, 63);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(507, 13);
             this.label1.TabIndex = 6;
             this.label1.Text = "Comune;Provincia;Denominazione sito;Indirizzo;Numero civico;ID Anagrafe;miovalore" +
     ";cancellazione logica";
             // 
+            // listView1
+            // 
+            this.listView1.HideSelection = false;
+            this.listView1.Location = new System.Drawing.Point(12, 225);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(848, 208);
+            this.listView1.TabIndex = 7;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.List;
+            // 
+            // punto6
+            // 
+            this.punto6.Location = new System.Drawing.Point(424, 26);
+            this.punto6.Name = "punto6";
+            this.punto6.Size = new System.Drawing.Size(75, 23);
+            this.punto6.TabIndex = 8;
+            this.punto6.Text = "3Campi";
+            this.punto6.UseVisualStyleBackColor = true;
+            this.punto6.Click += new System.EventHandler(this.punto6_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(600, 366);
+            this.ClientSize = new System.Drawing.Size(872, 471);
+            this.Controls.Add(this.punto6);
+            this.Controls.Add(this.listView1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.punto5);
             this.Controls.Add(this.textBox1);
@@ -139,6 +163,8 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button punto5;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.Button punto6;
     }
 }
 

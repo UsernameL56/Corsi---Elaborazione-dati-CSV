@@ -51,8 +51,13 @@ namespace Corsi___Elaborazione_dati_CSV
             RecordCoda(appoggio, textBox1.Text);
         }
 
+        private void punto6_Click(object sender, EventArgs e)
+        {
+            TreCampi(appoggio);
+        }
+
         //Funzione N.1
-        static void Aggiunta(string file, string appoggio, Random random)
+        public void Aggiunta(string file, string appoggio, Random random)
         {
             string line;
             int contatore = 0;
@@ -76,7 +81,7 @@ namespace Corsi___Elaborazione_dati_CSV
 
 
         //Funzione N.2
-        static void Campi(string appoggio)
+        public void Campi(string appoggio)
         {
             string line;
             int n;
@@ -89,7 +94,7 @@ namespace Corsi___Elaborazione_dati_CSV
 
 
         //Funzione N.3
-        static void Lunghezza(string appoggio)
+        public void Lunghezza(string appoggio)
         {
             string line;
             int n, max = 0;
@@ -106,14 +111,9 @@ namespace Corsi___Elaborazione_dati_CSV
             MessageBox.Show("La lunghezza massima dei record presenti è " + max);
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
 
         //Funzione N.4
-        static void Spaziatura(string appoggio)
+        public void Spaziatura(string appoggio)
         {
             string line;
             int controllo = 0;
@@ -133,11 +133,31 @@ namespace Corsi___Elaborazione_dati_CSV
 
 
         //Funzione N.5
-        static void RecordCoda(string appoggio, string stringa)
+        public void RecordCoda(string appoggio, string stringa)
         {
             StreamWriter writer = new StreamWriter("temp.csv", true);
             writer.WriteLine(stringa);
             writer.Close();
+        }
+
+
+        //Funzione N.6
+        public void TreCampi(string appoggio)
+        {
+            string line;
+            StreamReader reader = new StreamReader(appoggio);
+            while((line = reader.ReadLine()) != null)
+            {
+                string[] split = line.Split(';');
+                listView1.Items.Add((split[0]+";"+split[3] + ";" + split[4]).PadRight(100));
+            }
+            reader.Close();
+        }
+
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
