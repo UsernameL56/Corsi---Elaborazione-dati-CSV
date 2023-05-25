@@ -17,18 +17,21 @@ namespace Corsi___Elaborazione_dati_CSV
         StreamReader reader = null;
         StreamWriter writer = null;
         Random random;
-        string file, appoggio;
+        string file, appoggio, appoggio2;
         public Form1()
         {
             InitializeComponent();
             file = "corsi.csv";
             appoggio = "corsi2.csv";
+            appoggio2 = "corsi3.csv";
             random = new Random();
+            CampoUnivoco();
+            File.Delete("Spaziatura.csv");
         }
 
         private void punto1_Click(object sender, EventArgs e)
         {
-            Aggiunta(file, appoggio, random);
+            Aggiunta(appoggio, appoggio2, random);
         }
 
         private void punto2_Click(object sender, EventArgs e)
@@ -38,7 +41,8 @@ namespace Corsi___Elaborazione_dati_CSV
 
         private void punto3_Click(object sender, EventArgs e)
         {
-            Lunghezza(appoggio);
+            int max = Lunghezza(appoggio);
+            MessageBox.Show("La lunghezza massima dei record presenti è " + max);
         }
 
         private void punto4_Click(object sender, EventArgs e)
@@ -61,13 +65,18 @@ namespace Corsi___Elaborazione_dati_CSV
             Ricerca(appoggio);
         }
 
+        private void punto8_Click(object sender, EventArgs e)
+        {
+            Modifica(appoggio, textBox2.Text, textBox3.Text, textBox4.Text);
+        }
+
         //Funzione N.1
-        public void Aggiunta(string file, string appoggio, Random random)
+        public void Aggiunta(string appoggio, string appoggio2, Random random)
         {
             string line;
             int contatore = 0;
-            StreamReader reader = new StreamReader(file);
-            StreamWriter writer = new StreamWriter(appoggio);
+            StreamReader reader = new StreamReader(appoggio);
+            StreamWriter writer = new StreamWriter(appoggio2);
             while ((line = reader.ReadLine()) != null)
             {
                 if (contatore == 0)
@@ -82,6 +91,8 @@ namespace Corsi___Elaborazione_dati_CSV
             }
             reader.Close();
             writer.Close();
+
+            Sostituzione(appoggio2, appoggio);
         }
 
 
@@ -99,7 +110,7 @@ namespace Corsi___Elaborazione_dati_CSV
 
 
         //Funzione N.3
-        public void Lunghezza(string appoggio)
+        public int Lunghezza(string appoggio)
         {
             string line;
             int n, max = 0;
@@ -113,7 +124,7 @@ namespace Corsi___Elaborazione_dati_CSV
                 }
             }
             reader.Close();
-            MessageBox.Show("La lunghezza massima dei record presenti è " + max);
+            return max;
         }
 
 
@@ -123,13 +134,14 @@ namespace Corsi___Elaborazione_dati_CSV
             string line;
             int controllo = 0;
             StreamReader reader = new StreamReader(appoggio);
-            StreamWriter writer = new StreamWriter("temp.csv");
+            StreamWriter writer = new StreamWriter("Spaziatura.csv");
+            int max = Lunghezza("corsi2.csv");
             while ((line = reader.ReadLine()) != null)
             {
                 if(controllo == 0)
                     writer.WriteLine(line);
                 else
-                    writer.WriteLine(line.PadRight(200)+"#");
+                    writer.WriteLine(line.PadRight(max+10)+"#");
                 controllo++;
             }
             reader.Close();
@@ -207,6 +219,85 @@ namespace Corsi___Elaborazione_dati_CSV
             */
 
             reader.Close();
+        }
+
+
+        //Funzione N.8
+        public void Modifica(string appoggio, string univoco, string input, string modifica)
+        {
+            string line;
+            int temp, controllo = 0;
+            int n;
+            StreamReader reader = new StreamReader(appoggio);
+            line = reader.ReadLine();
+            n = line.Split(';').Length;
+            reader.Close();
+
+            reader = new StreamReader(appoggio);
+            StreamWriter writer = new StreamWriter("temp.csv");
+
+            while ((line = reader.ReadLine()) != null)
+            {
+                string[] split = line.Split(';');
+                if (controllo != 0)
+                {
+                    if (split[6] == univoco)
+                    {
+                        for (int i = 0; i < n; i++)
+                        {
+                            if (split[i] == input && i == 0)
+                                writer.Write(modifica);
+                            else if (split[i] == input && i == n - 1)
+                                writer.Write(modifica);
+                            else
+                                writer.Write(split[i]);
+                            if(i<n-1)
+                                writer.Write(";");
+                        }
+                        writer.Write("\n");
+                    }
+                    else
+                        writer.WriteLine(line);
+                }else
+                    writer.WriteLine(line);
+
+
+                controllo++;
+            }
+            writer.Close();
+            reader.Close();
+
+            Sostituzione("temp.csv", appoggio);
+        }
+
+
+
+        public void CampoUnivoco()
+        {
+            string line, file = "corsi.csv", appoggio = "corsi2.csv";
+            int contatore = 0;
+            StreamReader reader = new StreamReader(file);
+            StreamWriter writer = new StreamWriter(appoggio);
+            while ((line = reader.ReadLine()) != null)
+            {
+                if (contatore == 0)
+                {
+                    writer.WriteLine(line + ";campoUnivoco");
+                }
+                else
+                {
+                    writer.WriteLine(line + ";" + contatore);
+                }
+                contatore++;
+            }
+            reader.Close();
+            writer.Close();
+        }
+
+        public void Sostituzione(string nuovo, string vecchio)
+        {
+            File.Delete(vecchio);
+            File.Move(nuovo, vecchio);
         }
 
         private void Form1_Load(object sender, EventArgs e)
