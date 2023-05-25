@@ -32,6 +32,7 @@ namespace Corsi___Elaborazione_dati_CSV
         private void punto1_Click(object sender, EventArgs e)
         {
             Aggiunta(appoggio, appoggio2, random);
+            MessageBox.Show("operazione completata con successo!", "Info");
         }
 
         private void punto2_Click(object sender, EventArgs e)
@@ -42,44 +43,111 @@ namespace Corsi___Elaborazione_dati_CSV
         private void punto3_Click(object sender, EventArgs e)
         {
             int max = Lunghezza(appoggio);
-            MessageBox.Show("La lunghezza massima dei record presenti è " + max);
+            MessageBox.Show("La lunghezza massima dei record presenti è " + max, "Info");
         }
 
         private void punto4_Click(object sender, EventArgs e)
         {
             Spaziatura(appoggio);
+            MessageBox.Show("operazione completata con successo!", "Info");
         }
 
         private void punto5_Click(object sender, EventArgs e)
         {
-            RecordCoda(appoggio, textBox1.Text);
+            groupBox5.Show();
         }
+        private void invio_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(textBox1.Text) || string.IsNullOrWhiteSpace(textBox2.Text) || string.IsNullOrWhiteSpace(textBox3.Text) || string.IsNullOrWhiteSpace(textBox4.Text) || string.IsNullOrWhiteSpace(textBox5.Text) || string.IsNullOrWhiteSpace(textBox6.Text) || string.IsNullOrWhiteSpace(textBox7.Text) || string.IsNullOrWhiteSpace(textBox8.Text) || string.IsNullOrWhiteSpace(textBox9.Text))
+                MessageBox.Show("Text box vuota, inserire un valore in ciascuna text box", "Info");
+            else
+                RecordCoda(appoggio);
 
+            textBox1.Clear(); textBox2.Clear(); textBox3.Clear(); textBox4.Clear(); textBox5.Clear();
+            textBox6.Clear(); textBox7.Clear(); textBox8.Clear(); textBox9.Clear();
+        }
         private void punto6_Click(object sender, EventArgs e)
         {
+            groupBox1.Show();
             TreCampi(appoggio);
         }
 
         private void punto7_Click(object sender, EventArgs e)
         {
-            Ricerca(appoggio);
+            groupBox2.Show();
         }
-
+        private void cerca_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(textBoxRicerca.Text))
+                MessageBox.Show("TextBox vuota, inserire un campo univoco", "Info");
+            else
+                Ricerca(appoggio);
+            textBoxRicerca.Clear();
+        }
         private void punto8_Click(object sender, EventArgs e)
         {
-            Modifica(appoggio, textBox2.Text, textBox3.Text, textBox4.Text);
+            groupBox3.Show();
+            
         }
-
+        private void mod_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(textBoxCampo.Text) || string.IsNullOrWhiteSpace(textBoxOriginale.Text) || string.IsNullOrWhiteSpace(textBoxNuovo.Text))
+                MessageBox.Show("TextBox vuota, inserire un valore in ciascuna text box", "Info");
+            else
+                Modifica(appoggio, textBoxCampo.Text, textBoxOriginale.Text, textBoxNuovo.Text);
+            textBoxCampo.Clear();
+            textBoxOriginale.Clear();
+            textBoxNuovo.Clear();
+        }
         private void punto9_Click(object sender, EventArgs e)
         {
-            Cancellazione(appoggio, textBox2.Text);
+            groupBox4.Show();
         }
+        private void canc_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(textBoxCancellazione.Text))
+                MessageBox.Show("TextBox vuota, inserire un campo univoco", "Info");
+            else
+                Cancellazione(appoggio, textBoxCancellazione.Text);
+            textBoxCancellazione.Clear();
+        }
+
+        private void close1_Click(object sender, EventArgs e)
+        {
+            groupBox1.Hide();
+        }
+        private void close2_Click(object sender, EventArgs e)
+        {
+            textBoxRicerca.Clear();
+            groupBox2.Hide();
+        }
+        private void close3_Click(object sender, EventArgs e)
+        {
+            textBoxCampo.Clear();
+            textBoxOriginale.Clear();
+            textBoxNuovo.Clear();
+            groupBox3.Hide();
+        }
+        private void close4_Click(object sender, EventArgs e)
+        {
+            textBoxCancellazione.Clear();
+            groupBox4.Hide();
+        }
+        private void close5_Click(object sender, EventArgs e)
+        {
+            textBox1.Clear(); textBox2.Clear(); textBox3.Clear(); textBox4.Clear(); textBox5.Clear(); 
+            textBox6.Clear(); textBox7.Clear(); textBox8.Clear(); textBox9.Clear();
+            groupBox5.Hide();
+        }
+
 
         //Funzione N.1
         public void Aggiunta(string appoggio, string appoggio2, Random random)
         {
             string line;
             int contatore = 0;
+            File.Delete("corsi2.csv");
+            CampoUnivoco();
             StreamReader reader = new StreamReader(appoggio);
             StreamWriter writer = new StreamWriter(appoggio2);
             while ((line = reader.ReadLine()) != null)
@@ -110,7 +178,7 @@ namespace Corsi___Elaborazione_dati_CSV
             line = reader.ReadLine();
             n = line.Split(';').Length;
             reader.Close();
-            MessageBox.Show("Il numero di campi è " + n);
+            MessageBox.Show("Il numero di campi è " + n, "Info");
         }
 
 
@@ -155,9 +223,10 @@ namespace Corsi___Elaborazione_dati_CSV
 
 
         //Funzione N.5
-        public void RecordCoda(string appoggio, string stringa)
+        public void RecordCoda(string appoggio)
         {
-            StreamWriter writer = new StreamWriter("temp.csv", true);
+            string sep = ";", stringa = textBox1.Text + sep + textBox2.Text + sep + textBox3.Text + sep + textBox4.Text + sep + textBox5.Text + sep + textBox6.Text + sep + textBox7.Text + sep + textBox8.Text + sep + textBox9.Text;
+            StreamWriter writer = new StreamWriter("corsi2.csv", true);
             writer.WriteLine(stringa);
             writer.Close();
         }
@@ -181,47 +250,22 @@ namespace Corsi___Elaborazione_dati_CSV
         public void Ricerca(string appoggio)
         {
             string line;
-            int [] array = new int[1000];
-            int indice = 0, temp, controllo = 0;
+            int controllo = 0;
             StreamReader reader = new StreamReader(appoggio);
             
             while ((line = reader.ReadLine()) != null)
             {
                 string[] split = line.Split(';');
-                if (controllo != 0)
-                    //array[indice] = Convert.ToInt32(split[5]);
-                    if (split[6] == textBox1.Text)
+                    if (split[6] == textBoxRicerca.Text)
                     {
-                        MessageBox.Show("Numero trovato nella riga N." + controllo);
+                        MessageBox.Show("Numero trovato nella riga N." + (controllo + 1), "Info");
                         controllo = 0;
                         break;
                     }
                 controllo++;
-                //indice++;
             }
-            if(controllo != 0)
-            MessageBox.Show("Numero non trovato");
-
-            /*
-             * BUBBLE SORT PER VERIFICARE CHE I CAMPI SONO UNIVOCI  
-            for (int i = 0; i < indice-1; i++)
-            {
-                for (int j = 0; j < indice-1; j++)
-                {
-                    if(array[j] > array[j + 1])
-                    {
-                        temp = array[j];
-                        array[j] = array[j + 1];
-                        array[j + 1] = temp;
-                    }
-                }
-            }
-
-            for (int i = 0; i < array.Length; i++)
-            {
-                listView1.Items.Add((array[i]).ToString());
-            }
-            */
+            if (controllo != 0)
+                MessageBox.Show("Numero non trovato", "Info");
 
             reader.Close();
         }
@@ -231,7 +275,7 @@ namespace Corsi___Elaborazione_dati_CSV
         public void Modifica(string appoggio, string univoco, string input, string modifica)
         {
             string line;
-            int temp, controllo = 0;
+            int temp, controllo = 0, presenza = 0;
             int n;
             StreamReader reader = new StreamReader(appoggio);
             line = reader.ReadLine();
@@ -251,10 +295,14 @@ namespace Corsi___Elaborazione_dati_CSV
                         for (int i = 0; i < n; i++)
                         {
                             if (split[i] == input && i == 0)
+                            {
                                 writer.Write(modifica);
-                            else if (split[i] == input && i == n - 1)
+                                presenza = 1;
+                            }else if (split[i] == input && i == n - 1)
+                            {
                                 writer.Write(modifica);
-                            else
+                                presenza = 1;
+                            }else
                                 writer.Write(split[i]);
                             if(i<n-1)
                                 writer.Write(";");
@@ -266,12 +314,16 @@ namespace Corsi___Elaborazione_dati_CSV
                 }else
                     writer.WriteLine(line);
 
-
                 controllo++;
             }
+
+            if (presenza == 0)
+                MessageBox.Show("Parola non trovata all'interno del campo", "Info");
+            else
+                MessageBox.Show("Parola modificata correttamente!", "Info");
+
             writer.Close();
             reader.Close();
-
             Sostituzione("temp.csv", appoggio);
         }
 
@@ -280,7 +332,7 @@ namespace Corsi___Elaborazione_dati_CSV
         public void Cancellazione(string appoggio, string univoco)
         {
             string line;
-            int temp, controllo = 0;
+            int controllo = 0, presenza = 0;
             int n;
             StreamReader reader = new StreamReader(appoggio);
             line = reader.ReadLine();
@@ -307,6 +359,7 @@ namespace Corsi___Elaborazione_dati_CSV
                                 writer.Write(";");
                         }
                         writer.Write("\n");
+                        presenza = 1;
                     }
                     else
                         writer.WriteLine(line);
@@ -316,6 +369,12 @@ namespace Corsi___Elaborazione_dati_CSV
 
                 controllo++;
             }
+
+            if (presenza == 0)
+                MessageBox.Show("Numero unico non trovato", "Info");
+            else
+                MessageBox.Show("Cancellazione logica eseguita correttamente!", "Info");
+
             writer.Close();
             reader.Close();
 
@@ -343,7 +402,6 @@ namespace Corsi___Elaborazione_dati_CSV
             reader.Close();
             writer.Close();
         }
-
 
         public void Sostituzione(string nuovo, string vecchio)
         {
