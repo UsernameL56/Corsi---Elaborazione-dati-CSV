@@ -70,6 +70,11 @@ namespace Corsi___Elaborazione_dati_CSV
             Modifica(appoggio, textBox2.Text, textBox3.Text, textBox4.Text);
         }
 
+        private void punto9_Click(object sender, EventArgs e)
+        {
+            Cancellazione(appoggio, textBox2.Text);
+        }
+
         //Funzione N.1
         public void Aggiunta(string appoggio, string appoggio2, Random random)
         {
@@ -185,7 +190,7 @@ namespace Corsi___Elaborazione_dati_CSV
                 string[] split = line.Split(';');
                 if (controllo != 0)
                     //array[indice] = Convert.ToInt32(split[5]);
-                    if (split[5] == textBox1.Text)
+                    if (split[6] == textBox1.Text)
                     {
                         MessageBox.Show("Numero trovato nella riga N." + controllo);
                         controllo = 0;
@@ -271,6 +276,51 @@ namespace Corsi___Elaborazione_dati_CSV
         }
 
 
+        //Funzione N.9
+        public void Cancellazione(string appoggio, string univoco)
+        {
+            string line;
+            int temp, controllo = 0;
+            int n;
+            StreamReader reader = new StreamReader(appoggio);
+            line = reader.ReadLine();
+            n = line.Split(';').Length;
+            reader.Close();
+
+            reader = new StreamReader(appoggio);
+            StreamWriter writer = new StreamWriter("temp.csv");
+
+            while ((line = reader.ReadLine()) != null)
+            {
+                string[] split = line.Split(';');
+                if (controllo != 0)
+                {
+                    if (split[6] == univoco)
+                    {
+                        for (int i = 0; i < n; i++)
+                        {
+                            if (split[i] == "true")
+                                writer.Write("false");
+                            else
+                                writer.Write(split[i]);
+                            if (i < n - 1)
+                                writer.Write(";");
+                        }
+                        writer.Write("\n");
+                    }
+                    else
+                        writer.WriteLine(line);
+                }
+                else
+                    writer.WriteLine(line);
+
+                controllo++;
+            }
+            writer.Close();
+            reader.Close();
+
+            Sostituzione("temp.csv", appoggio);
+        }
 
         public void CampoUnivoco()
         {
@@ -293,6 +343,7 @@ namespace Corsi___Elaborazione_dati_CSV
             reader.Close();
             writer.Close();
         }
+
 
         public void Sostituzione(string nuovo, string vecchio)
         {

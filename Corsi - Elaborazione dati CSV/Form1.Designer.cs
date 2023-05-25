@@ -42,6 +42,7 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
+            this.punto9 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // punto1
@@ -186,11 +187,23 @@
             this.textBox4.Size = new System.Drawing.Size(100, 22);
             this.textBox4.TabIndex = 14;
             // 
+            // punto9
+            // 
+            this.punto9.Location = new System.Drawing.Point(921, 34);
+            this.punto9.Margin = new System.Windows.Forms.Padding(4);
+            this.punto9.Name = "punto9";
+            this.punto9.Size = new System.Drawing.Size(100, 28);
+            this.punto9.TabIndex = 15;
+            this.punto9.Text = "Cancellazione";
+            this.punto9.UseVisualStyleBackColor = true;
+            this.punto9.Click += new System.EventHandler(this.punto9_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1163, 580);
+            this.Controls.Add(this.punto9);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox3);
@@ -230,6 +243,7 @@
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.Button punto9;
     }
 }
 
