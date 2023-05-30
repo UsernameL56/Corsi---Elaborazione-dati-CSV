@@ -18,6 +18,7 @@ namespace Corsi___Elaborazione_dati_CSV
         StreamWriter writer = null;
         Random random;
         string file, appoggio, appoggio2;
+        int controllo;
         public Form1()
         {
             InitializeComponent();
@@ -27,6 +28,7 @@ namespace Corsi___Elaborazione_dati_CSV
             random = new Random();
             CampoUnivoco();
             File.Delete("Spaziatura.csv");
+            controllo = 0;
         }
 
         private void punto1_Click(object sender, EventArgs e)
@@ -54,27 +56,15 @@ namespace Corsi___Elaborazione_dati_CSV
 
         private void punto5_Click(object sender, EventArgs e)
         {
-            groupBox5.Show();
         }
-        private void invio_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(textBox1.Text) || string.IsNullOrWhiteSpace(textBox2.Text) || string.IsNullOrWhiteSpace(textBox3.Text) || string.IsNullOrWhiteSpace(textBox4.Text) || string.IsNullOrWhiteSpace(textBox5.Text) || string.IsNullOrWhiteSpace(textBox6.Text) || string.IsNullOrWhiteSpace(textBox7.Text) || string.IsNullOrWhiteSpace(textBox8.Text) || string.IsNullOrWhiteSpace(textBox9.Text))
-                MessageBox.Show("Text box vuota, inserire un valore in ciascuna text box", "Info");
-            else
-                RecordCoda(appoggio);
-
-            textBox1.Clear(); textBox2.Clear(); textBox3.Clear(); textBox4.Clear(); textBox5.Clear();
-            textBox6.Clear(); textBox7.Clear(); textBox8.Clear(); textBox9.Clear();
-        }
+        
         private void punto6_Click(object sender, EventArgs e)
         {
-            groupBox1.Show();
             TreCampi(appoggio);
         }
 
         private void punto7_Click(object sender, EventArgs e)
         {
-            groupBox2.Show();
         }
         private void cerca_Click(object sender, EventArgs e)
         {
@@ -85,9 +75,7 @@ namespace Corsi___Elaborazione_dati_CSV
             textBoxRicerca.Clear();
         }
         private void punto8_Click(object sender, EventArgs e)
-        {
-            groupBox3.Show();
-            
+        {   
         }
         private void mod_Click(object sender, EventArgs e)
         {
@@ -101,7 +89,6 @@ namespace Corsi___Elaborazione_dati_CSV
         }
         private void punto9_Click(object sender, EventArgs e)
         {
-            groupBox4.Show();
         }
         private void canc_Click(object sender, EventArgs e)
         {
@@ -114,30 +101,34 @@ namespace Corsi___Elaborazione_dati_CSV
 
         private void close1_Click(object sender, EventArgs e)
         {
-            groupBox1.Hide();
+            tabControl1.Hide();
+            controllo = 0;
         }
         private void close2_Click(object sender, EventArgs e)
         {
             textBoxRicerca.Clear();
-            groupBox2.Hide();
+            tabControl1.Hide();
+            controllo = 0;
         }
         private void close3_Click(object sender, EventArgs e)
         {
             textBoxCampo.Clear();
             textBoxOriginale.Clear();
             textBoxNuovo.Clear();
-            groupBox3.Hide();
+            tabControl1.Hide();
+            controllo = 0;
         }
         private void close4_Click(object sender, EventArgs e)
         {
             textBoxCancellazione.Clear();
-            groupBox4.Hide();
+            tabControl1.Hide();
         }
         private void close5_Click(object sender, EventArgs e)
         {
+            tabControl1.Hide();
+            controllo = 0;
             textBox1.Clear(); textBox2.Clear(); textBox3.Clear(); textBox4.Clear(); textBox5.Clear(); 
             textBox6.Clear(); textBox7.Clear(); textBox8.Clear(); textBox9.Clear();
-            groupBox5.Hide();
         }
 
 
@@ -402,6 +393,171 @@ namespace Corsi___Elaborazione_dati_CSV
             reader.Close();
             writer.Close();
         }
+
+        
+                                                                                ////Funzione Aggiunta
+        private void aggiuntaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Aggiunta(appoggio, appoggio2, random);
+            MessageBox.Show("operazione completata con successo!", "Info");
+        }
+
+        //Funzioni Hover aggiunta   
+        private void aggiuntaToolStripMenuItem_MouseHover(object sender, EventArgs e)
+        {
+            info1.Show();
+        }
+        private void aggiuntaToolStripMenuItem_MouseLeave(object sender, EventArgs e)
+        {
+            info1.Hide();
+        }
+            
+                                                                                ////Funzione nCampi
+        private void nCampiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Campi(appoggio);
+        }
+
+        //Funzioni Hover nCampi
+        private void nCampiToolStripMenuItem_MouseHover(object sender, EventArgs e)
+        {
+            info2.Show();
+        }
+        private void nCampiToolStripMenuItem_MouseLeave(object sender, EventArgs e)
+        {
+            info2.Hide();
+        }
+            
+                                                                                ////Funzione lunghezzaMax
+        private void lunghezzaMaxToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int max = Lunghezza(appoggio);
+            MessageBox.Show("La lunghezza massima dei record presenti è " + max, "Info");
+        }
+
+        //Funzioni Hover lunghezzaMax
+        private void lunghezzaMaxToolStripMenuItem_MouseHover(object sender, EventArgs e)
+        {
+            info3.Show();
+        }
+        private void lunghezzaMaxToolStripMenuItem_MouseLeave(object sender, EventArgs e)
+        {
+            info3.Hide();
+        }
+            
+                                                                                ////Funzione spaziatura
+        private void spaziaturaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Spaziatura(appoggio);
+            MessageBox.Show("operazione completata con successo!", "Info");
+        }
+
+        //Funzioni Hover spaziatura
+        private void spaziaturaToolStripMenuItem_MouseHover(object sender, EventArgs e)
+        {
+            info4.Show();
+        }
+        private void spaziaturaToolStripMenuItem_MouseLeave(object sender, EventArgs e)
+        {
+            info4.Hide();
+        }
+
+                                                                                ////Funzione aggiuntaRCoda
+        private void aggiuntaRCodaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            tabControl1.Show();
+            tabControl1.SelectTab(0);
+        }
+        private void invio_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(textBox1.Text) || string.IsNullOrWhiteSpace(textBox2.Text) || string.IsNullOrWhiteSpace(textBox3.Text) || string.IsNullOrWhiteSpace(textBox4.Text) || string.IsNullOrWhiteSpace(textBox5.Text) || string.IsNullOrWhiteSpace(textBox6.Text) || string.IsNullOrWhiteSpace(textBox7.Text) || string.IsNullOrWhiteSpace(textBox8.Text) || string.IsNullOrWhiteSpace(textBox9.Text))
+                MessageBox.Show("Text box vuota, inserire un valore in ciascuna text box", "Info");
+            else
+                RecordCoda(appoggio);
+
+            textBox1.Clear(); textBox2.Clear(); textBox3.Clear(); textBox4.Clear(); textBox5.Clear();
+            textBox6.Clear(); textBox7.Clear(); textBox8.Clear(); textBox9.Clear();
+        }
+
+        //Funzioni Hover aggiuntaRCoda
+        private void aggiuntaRCodaToolStripMenuItem_MouseHover(object sender, EventArgs e)
+        {
+            info5.Show();
+        }
+        private void aggiuntaRCodaToolStripMenuItem_MouseLeave(object sender, EventArgs e)
+        {
+            info5.Hide();
+        }
+
+                                                                                ////Funzione 3Campi               
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        { 
+                tabControl1.Show();
+                tabControl1.SelectTab(1);
+                TreCampi(appoggio);
+        }
+
+        //Funzioni Hover 3Campi
+        private void toolStripMenuItem1_MouseHover(object sender, EventArgs e)
+        {
+            info6.Show();
+        }
+        private void toolStripMenuItem1_MouseLeave(object sender, EventArgs e)
+        {
+            info6.Hide();
+        }
+
+                                                                                ////Ricerca
+        private void ricercaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+                tabControl1.Show();
+                tabControl1.SelectTab(2);
+        }
+
+        //Funzioni Hover ricerca
+        private void ricercaToolStripMenuItem_MouseHover(object sender, EventArgs e)
+        {
+            info7.Show();
+        }
+        private void ricercaToolStripMenuItem_MouseLeave(object sender, EventArgs e)
+        {
+            info7.Hide();
+        }
+
+                                                                                ////Modifica
+        private void modificaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+                tabControl1.Show();
+                tabControl1.SelectTab(3);
+        }
+
+        //Funzioni Hover modifica
+        private void modificaToolStripMenuItem_MouseHover(object sender, EventArgs e)
+        {
+            info8.Show();
+        }
+        private void modificaToolStripMenuItem_MouseLeave(object sender, EventArgs e)
+        {
+            info8.Hide();
+        }
+
+            ////Cancellazione                                                   ////Funzione cancellazione
+        private void cancellazioneToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            tabControl1.Show();
+            tabControl1.SelectTab(4);
+        }
+        //Funzione cancellazione
+        private void cancellazioneToolStripMenuItem_MouseHover(object sender, EventArgs e)
+        {
+            info9.Show();
+        }
+        private void cancellazioneToolStripMenuItem_MouseLeave(object sender, EventArgs e)
+        {
+            info9.Hide();
+        }
+
+        
 
         public void Sostituzione(string nuovo, string vecchio)
         {
