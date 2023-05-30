@@ -31,73 +31,8 @@ namespace Corsi___Elaborazione_dati_CSV
             controllo = 0;
         }
 
-        private void punto1_Click(object sender, EventArgs e)
-        {
-            Aggiunta(appoggio, appoggio2, random);
-            MessageBox.Show("operazione completata con successo!", "Info");
-        }
-
-        private void punto2_Click(object sender, EventArgs e)
-        {
-            Campi(appoggio);
-        }
-
-        private void punto3_Click(object sender, EventArgs e)
-        {
-            int max = Lunghezza(appoggio);
-            MessageBox.Show("La lunghezza massima dei record presenti è " + max, "Info");
-        }
-
-        private void punto4_Click(object sender, EventArgs e)
-        {
-            Spaziatura(appoggio);
-            MessageBox.Show("operazione completata con successo!", "Info");
-        }
-
-        private void punto5_Click(object sender, EventArgs e)
-        {
-        }
         
-        private void punto6_Click(object sender, EventArgs e)
-        {
-            TreCampi(appoggio);
-        }
-
-        private void punto7_Click(object sender, EventArgs e)
-        {
-        }
-        private void cerca_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(textBoxRicerca.Text))
-                MessageBox.Show("TextBox vuota, inserire un campo univoco", "Info");
-            else
-                Ricerca(appoggio);
-            textBoxRicerca.Clear();
-        }
-        private void punto8_Click(object sender, EventArgs e)
-        {   
-        }
-        private void mod_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(textBoxCampo.Text) || string.IsNullOrWhiteSpace(textBoxOriginale.Text) || string.IsNullOrWhiteSpace(textBoxNuovo.Text))
-                MessageBox.Show("TextBox vuota, inserire un valore in ciascuna text box", "Info");
-            else
-                Modifica(appoggio, textBoxCampo.Text, textBoxOriginale.Text, textBoxNuovo.Text);
-            textBoxCampo.Clear();
-            textBoxOriginale.Clear();
-            textBoxNuovo.Clear();
-        }
-        private void punto9_Click(object sender, EventArgs e)
-        {
-        }
-        private void canc_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(textBoxCancellazione.Text))
-                MessageBox.Show("TextBox vuota, inserire un campo univoco", "Info");
-            else
-                Cancellazione(appoggio, textBoxCancellazione.Text);
-            textBoxCancellazione.Clear();
-        }
+        
 
         private void close1_Click(object sender, EventArgs e)
         {
@@ -530,6 +465,16 @@ namespace Corsi___Elaborazione_dati_CSV
                 tabControl1.Show();
                 tabControl1.SelectTab(3);
         }
+        private void mod_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(textBoxCampo.Text) || string.IsNullOrWhiteSpace(textBoxOriginale.Text) || string.IsNullOrWhiteSpace(textBoxNuovo.Text))
+                MessageBox.Show("TextBox vuota, inserire un valore in ciascuna text box", "Info");
+            else
+                Modifica(appoggio, textBoxCampo.Text, textBoxOriginale.Text, textBoxNuovo.Text);
+            textBoxCampo.Clear();
+            textBoxOriginale.Clear();
+            textBoxNuovo.Clear();
+        }
 
         //Funzioni Hover modifica
         private void modificaToolStripMenuItem_MouseHover(object sender, EventArgs e)
@@ -540,13 +485,22 @@ namespace Corsi___Elaborazione_dati_CSV
         {
             info8.Hide();
         }
-
-            ////Cancellazione                                                   ////Funzione cancellazione
+        
+                                                                                ////Funzione cancellazione
         private void cancellazioneToolStripMenuItem_Click(object sender, EventArgs e)
         {
             tabControl1.Show();
             tabControl1.SelectTab(4);
         }
+        private void canc_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(textBoxCancellazione.Text))
+                MessageBox.Show("TextBox vuota, inserire un campo univoco", "Info");
+            else
+                Cancellazione(appoggio, textBoxCancellazione.Text);
+            textBoxCancellazione.Clear();
+        }
+
         //Funzione cancellazione
         private void cancellazioneToolStripMenuItem_MouseHover(object sender, EventArgs e)
         {

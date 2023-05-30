@@ -28,19 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.punto1 = new System.Windows.Forms.Button();
-            this.punto2 = new System.Windows.Forms.Button();
-            this.punto3 = new System.Windows.Forms.Button();
-            this.punto4 = new System.Windows.Forms.Button();
-            this.punto5 = new System.Windows.Forms.Button();
             this.listView1 = new System.Windows.Forms.ListView();
-            this.punto6 = new System.Windows.Forms.Button();
-            this.punto7 = new System.Windows.Forms.Button();
-            this.punto8 = new System.Windows.Forms.Button();
             this.textBoxOriginale = new System.Windows.Forms.TextBox();
             this.textBoxCampo = new System.Windows.Forms.TextBox();
             this.textBoxNuovo = new System.Windows.Forms.TextBox();
-            this.punto9 = new System.Windows.Forms.Button();
             this.close1 = new System.Windows.Forms.Button();
             this.cerca = new System.Windows.Forms.Button();
             this.close2 = new System.Windows.Forms.Button();
@@ -109,61 +100,6 @@
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // punto1
-            // 
-            this.punto1.Location = new System.Drawing.Point(61, 498);
-            this.punto1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.punto1.Name = "punto1";
-            this.punto1.Size = new System.Drawing.Size(93, 23);
-            this.punto1.TabIndex = 0;
-            this.punto1.Text = "Aggiunta";
-            this.punto1.UseVisualStyleBackColor = true;
-            this.punto1.Click += new System.EventHandler(this.punto1_Click);
-            // 
-            // punto2
-            // 
-            this.punto2.Location = new System.Drawing.Point(163, 497);
-            this.punto2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.punto2.Name = "punto2";
-            this.punto2.Size = new System.Drawing.Size(75, 23);
-            this.punto2.TabIndex = 1;
-            this.punto2.Text = "Campi";
-            this.punto2.UseVisualStyleBackColor = true;
-            this.punto2.Click += new System.EventHandler(this.punto2_Click);
-            // 
-            // punto3
-            // 
-            this.punto3.Location = new System.Drawing.Point(253, 497);
-            this.punto3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.punto3.Name = "punto3";
-            this.punto3.Size = new System.Drawing.Size(99, 23);
-            this.punto3.TabIndex = 2;
-            this.punto3.Text = "Lunghezza";
-            this.punto3.UseVisualStyleBackColor = true;
-            this.punto3.Click += new System.EventHandler(this.punto3_Click);
-            // 
-            // punto4
-            // 
-            this.punto4.Location = new System.Drawing.Point(369, 497);
-            this.punto4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.punto4.Name = "punto4";
-            this.punto4.Size = new System.Drawing.Size(92, 23);
-            this.punto4.TabIndex = 3;
-            this.punto4.Text = "Spaziatura";
-            this.punto4.UseVisualStyleBackColor = true;
-            this.punto4.Click += new System.EventHandler(this.punto4_Click);
-            // 
-            // punto5
-            // 
-            this.punto5.Location = new System.Drawing.Point(478, 497);
-            this.punto5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.punto5.Name = "punto5";
-            this.punto5.Size = new System.Drawing.Size(92, 23);
-            this.punto5.TabIndex = 5;
-            this.punto5.Text = "Coda";
-            this.punto5.UseVisualStyleBackColor = true;
-            this.punto5.Click += new System.EventHandler(this.punto5_Click);
-            // 
             // listView1
             // 
             this.listView1.HideSelection = false;
@@ -174,39 +110,6 @@
             this.listView1.TabIndex = 7;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.List;
-            // 
-            // punto6
-            // 
-            this.punto6.Location = new System.Drawing.Point(590, 495);
-            this.punto6.Margin = new System.Windows.Forms.Padding(4);
-            this.punto6.Name = "punto6";
-            this.punto6.Size = new System.Drawing.Size(100, 28);
-            this.punto6.TabIndex = 8;
-            this.punto6.Text = "3Campi";
-            this.punto6.UseVisualStyleBackColor = true;
-            this.punto6.Click += new System.EventHandler(this.punto6_Click);
-            // 
-            // punto7
-            // 
-            this.punto7.Location = new System.Drawing.Point(712, 495);
-            this.punto7.Margin = new System.Windows.Forms.Padding(4);
-            this.punto7.Name = "punto7";
-            this.punto7.Size = new System.Drawing.Size(100, 28);
-            this.punto7.TabIndex = 9;
-            this.punto7.Text = "Ricerca";
-            this.punto7.UseVisualStyleBackColor = true;
-            this.punto7.Click += new System.EventHandler(this.punto7_Click);
-            // 
-            // punto8
-            // 
-            this.punto8.Location = new System.Drawing.Point(829, 497);
-            this.punto8.Margin = new System.Windows.Forms.Padding(4);
-            this.punto8.Name = "punto8";
-            this.punto8.Size = new System.Drawing.Size(100, 28);
-            this.punto8.TabIndex = 11;
-            this.punto8.Text = "Modifica";
-            this.punto8.UseVisualStyleBackColor = true;
-            this.punto8.Click += new System.EventHandler(this.punto8_Click);
             // 
             // textBoxOriginale
             // 
@@ -231,17 +134,6 @@
             this.textBoxNuovo.Name = "textBoxNuovo";
             this.textBoxNuovo.Size = new System.Drawing.Size(100, 22);
             this.textBoxNuovo.TabIndex = 14;
-            // 
-            // punto9
-            // 
-            this.punto9.Location = new System.Drawing.Point(946, 497);
-            this.punto9.Margin = new System.Windows.Forms.Padding(4);
-            this.punto9.Name = "punto9";
-            this.punto9.Size = new System.Drawing.Size(100, 28);
-            this.punto9.TabIndex = 15;
-            this.punto9.Text = "Cancellazione";
-            this.punto9.UseVisualStyleBackColor = true;
-            this.punto9.Click += new System.EventHandler(this.punto9_Click);
             // 
             // close1
             // 
@@ -902,15 +794,6 @@
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.info2);
             this.Controls.Add(this.info1);
-            this.Controls.Add(this.punto9);
-            this.Controls.Add(this.punto8);
-            this.Controls.Add(this.punto7);
-            this.Controls.Add(this.punto6);
-            this.Controls.Add(this.punto5);
-            this.Controls.Add(this.punto4);
-            this.Controls.Add(this.punto3);
-            this.Controls.Add(this.punto2);
-            this.Controls.Add(this.punto1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -935,20 +818,10 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button punto1;
-        private System.Windows.Forms.Button punto2;
-        private System.Windows.Forms.Button punto3;
-        private System.Windows.Forms.Button punto4;
-        private System.Windows.Forms.Button punto5;
         private System.Windows.Forms.ListView listView1;
-        private System.Windows.Forms.Button punto6;
-        private System.Windows.Forms.Button punto7;
-        private System.Windows.Forms.Button punto8;
         private System.Windows.Forms.TextBox textBoxOriginale;
         private System.Windows.Forms.TextBox textBoxCampo;
         private System.Windows.Forms.TextBox textBoxNuovo;
-        private System.Windows.Forms.Button punto9;
         private System.Windows.Forms.Button close1;
         private System.Windows.Forms.Button close2;
         private System.Windows.Forms.Label label2;
