@@ -448,7 +448,7 @@ namespace Corsi___Elaborazione_dati_CSV
                 tabControl1.Show();
                 tabControl1.SelectTab(2);
         }
-        private void cerca_Click(object sender, EventArgs e)
+        private void cerca_Click_1(object sender, EventArgs e)
         {
             Ricerca(appoggio);
             textBoxRicerca.Clear();
@@ -515,8 +515,6 @@ namespace Corsi___Elaborazione_dati_CSV
         {
             info9.Hide();
         }
-
-        
 
         public void Sostituzione(string nuovo, string vecchio)
         {
