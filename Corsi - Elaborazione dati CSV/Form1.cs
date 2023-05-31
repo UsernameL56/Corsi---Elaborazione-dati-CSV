@@ -448,6 +448,11 @@ namespace Corsi___Elaborazione_dati_CSV
                 tabControl1.Show();
                 tabControl1.SelectTab(2);
         }
+        private void cerca_Click(object sender, EventArgs e)
+        {
+            Ricerca(appoggio);
+            textBoxRicerca.Clear();
+        }
 
         //Funzioni Hover ricerca
         private void ricercaToolStripMenuItem_MouseHover(object sender, EventArgs e)
